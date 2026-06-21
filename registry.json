@@ -1,0 +1,119 @@
+{
+  "framework_version": "0.2.0",
+  "xop_types": {
+    "resolution": {
+      "description": "Artifact + Guard findings -> keep | delete | replace | abstain",
+      "output": "Disposition"
+    },
+    "evaluation": {
+      "description": "Interaction trace -> behavioral state | abstain",
+      "output": "EvaluationFinding"
+    }
+  },
+  "work_packs": {
+    "writing": {
+      "guard": "no-ai-tells",
+      "guard_script": "guards/no_ai_tells.py",
+      "xop": "writing-license",
+      "xop_spec": "xops/writing_license.md",
+      "xop_type": "resolution",
+      "scope": "flag",
+      "applies_to": ["prose", "article", "manuscript", "blog", "report"],
+      "self_check": true,
+      "badge": "FIXTURE-TESTED",
+      "fixtures": "tests/fixtures/writing_fixtures.jsonl",
+      "shadow_pattern": null
+    },
+    "agreement": {
+      "guard": "agreement-bias",
+      "guard_script": "guards/agreement_bias.py",
+      "xop": "agreement-calibration",
+      "xop_spec": "xops/agreement_bias.md",
+      "xop_type": "resolution",
+      "scope": "flag",
+      "applies_to": ["conversation", "response", "chat"],
+      "self_check": true,
+      "badge": "FIXTURE-TESTED",
+      "fixtures": "tests/fixtures/agreement_bias_fixtures.jsonl",
+      "shadow_pattern": "S-01"
+    },
+    "closure": {
+      "guard": "closure-rush",
+      "guard_script": "guards/closure_rush.py",
+      "xop": "closure-rush",
+      "xop_spec": "xops/closure_rush.md",
+      "xop_type": "resolution",
+      "scope": "flag",
+      "applies_to": ["conversation", "response", "chat"],
+      "self_check": true,
+      "badge": "FIXTURE-TESTED",
+      "fixtures": "tests/fixtures/closure_rush_fixtures.jsonl",
+      "shadow_pattern": "S-07"
+    },
+    "helpful": {
+      "guard": "helpful-explosion",
+      "guard_script": "guards/helpful_explosion.py",
+      "xop": "helpful-explosion",
+      "xop_spec": "xops/helpful_explosion.md",
+      "xop_type": "resolution",
+      "scope": "artifact",
+      "applies_to": ["conversation", "response", "chat"],
+      "self_check": true,
+      "badge": "FIXTURE-TESTED",
+      "fixtures": "tests/fixtures/helpful_explosion_fixtures.jsonl",
+      "shadow_pattern": "S-02"
+    },
+    "coaching": {
+      "guard": "coaching",
+      "guard_script": "guards/coaching.py",
+      "xop": "coaching-calibration",
+      "xop_spec": "xops/coaching.md",
+      "xop_type": "resolution",
+      "scope": "flag",
+      "applies_to": ["conversation", "response", "emotional"],
+      "self_check": true,
+      "badge": "FIXTURE-TESTED",
+      "fixtures": "tests/fixtures/coaching_fixtures.jsonl",
+      "shadow_pattern": "S-04"
+    },
+    "template": {
+      "guard": "template-cascade",
+      "guard_script": "guards/template_cascade.py",
+      "xop": "template-cascade",
+      "xop_spec": "xops/template_cascade.md",
+      "xop_type": "resolution",
+      "scope": "flag",
+      "applies_to": ["conversation", "response", "chat"],
+      "self_check": true,
+      "badge": "FIXTURE-TESTED",
+      "fixtures": "tests/fixtures/template_cascade_fixtures.jsonl",
+      "shadow_pattern": "S-03"
+    },
+    "stance": {
+      "guard": "stance-calibration",
+      "guard_script": "guards/stance_calibration.py",
+      "xop": "stance-calibration",
+      "xop_spec": "xops/stance_calibration.md",
+      "xop_type": "evaluation",
+      "scope": "conversation",
+      "applies_to": ["conversation", "long-context", "multi-turn"],
+      "self_check": false,
+      "badge": "FIXTURE-TESTED",
+      "fixtures": "tests/fixtures/stance_calibration_fixtures.jsonl",
+      "shadow_pattern": null,
+      "note": "Evaluation xOP. Produces behavioral state assessments, not text replacements. Operates on conversation history. xOP judgment is HELD."
+    }
+  },
+  "agents": {
+    "guard": "agents/guard_agent.md",
+    "xop": "agents/xop_agent.md",
+    "orchestrator": "agents/orchestrator_agent.md"
+  },
+  "shadow_pattern_map": {
+    "S-01": "agreement",
+    "S-02": "helpful",
+    "S-03": "template",
+    "S-04": "coaching",
+    "S-07": "closure"
+  }
+}

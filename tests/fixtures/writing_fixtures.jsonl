@@ -1,0 +1,15 @@
+{"label": "clean_technical", "text": "The API returns a JSON object with three fields: status, data, and error. Status codes follow HTTP conventions.", "expect_verdict": "PASS"}
+{"label": "clean_narrative", "text": "She walked through the market at dawn. The vendors were setting up their stalls, arranging fruit in careful pyramids. Nobody spoke.", "expect_verdict": "PASS"}
+{"label": "clean_academic", "text": "The regression coefficient was statistically significant at p < 0.01. We controlled for age, income, and education level.", "expect_verdict": "PASS"}
+{"label": "clean_instructions", "text": "Open the terminal. Run the command. Check the output. If it fails, read the error message before asking for help.", "expect_verdict": "PASS"}
+{"label": "slop_delve", "text": "In this article, we delve into the complexities of modern software architecture.", "expect_verdict": "REVIEW", "expect_tells": ["vocabulary.delve"]}
+{"label": "slop_tapestry", "text": "The startup ecosystem represents a rich tapestry of innovation and disruption.", "expect_verdict": "REVIEW", "expect_tells": ["vocabulary.rich_tapestry"]}
+{"label": "slop_robust", "text": "Our robust platform provides seamless integration with your existing tools, leveraging cutting-edge technology.", "expect_verdict": "REVIEW", "expect_tells": ["vocabulary.robust", "vocabulary.seamless", "vocabulary.leveraging", "vocabulary.cutting-edge"]}
+{"label": "slop_not_just", "text": "This product is not just a tool, it's a game-changer for how teams collaborate.", "expect_verdict": "REVIEW", "expect_tells": ["construction.not_just_but", "vocabulary.game-changer"]}
+{"label": "slop_in_conclusion", "text": "We analyzed the data carefully.\nIn conclusion, the results speak for themselves.", "expect_verdict": "REVIEW", "expect_tells": ["construction.in_conclusion"]}
+{"label": "slop_ultimately", "text": "We tested three approaches.\nUltimately, the third proved most effective.", "expect_verdict": "REVIEW", "expect_tells": ["construction.ultimately_opener"]}
+{"label": "slop_lets_dive", "text": "Let's dive into the details of how this system works under the hood.", "expect_verdict": "REVIEW", "expect_tells": ["construction.lets_dive_in"]}
+{"label": "edge_legit_delve", "text": "The geologists delve below the fault line to collect core samples from the Precambrian layer.", "expect_verdict": "REVIEW", "expect_tells": ["vocabulary.delve"]}
+{"label": "edge_legit_tapestry", "text": "The medieval tapestry hung on the east wall of the cathedral, depicting the Battle of Hastings in silk and gold thread.", "expect_verdict": "REVIEW", "expect_tells": ["vocabulary.tapestry"]}
+{"label": "edge_legit_robust", "text": "We used robust standard errors to account for heteroscedasticity in the panel data.", "expect_verdict": "REVIEW", "expect_tells": ["vocabulary.robust"]}
+{"label": "edge_code_fence", "text": "Here is an example:\n```python\n# This is robust and seamless\nresult = delve(data)\n```\nThe function works as expected.", "expect_verdict": "PASS"}
