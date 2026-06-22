@@ -139,27 +139,38 @@ xop-kit/
 
 ## Usage
 
+### Install
+```bash
+git clone https://github.com/awakenfyi/xop-kit
+cd xop-kit
+python3 -m pip install -e .
+```
+
+> **macOS note:** `pip install -e .` puts the `xop` command in `~/Library/Python/3.x/bin/`.
+> Either add that to your PATH, or use `python3 cli.py` directly (works without PATH changes).
+
 ### CLI
 ```bash
 # Scan a file against all Guards
-xop scan draft.md
+python3 cli.py scan draft.md
 
 # Scan with a specific Work Pack
-xop scan draft.md --pack writing
+python3 cli.py scan draft.md --pack writing
 
-# Run all fixture tests
-xop test
+# Run all fixture tests (95/95)
+python3 cli.py test
 
 # List registered Work Packs
-xop list
+python3 cli.py list
 
 # Show Work Pack details + xOP spec
-xop info writing
+python3 cli.py info writing
 ```
 
-### Install (local)
+Or with `xop` in PATH:
 ```bash
-pip install -e .
+xop scan draft.md --pack writing
+xop test
 ```
 
 ### Python API
