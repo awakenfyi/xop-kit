@@ -17,10 +17,12 @@ setup(
             "xop=cli:main",
         ],
     },
+    license="MIT",
     python_requires=">=3.8",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
         "Topic :: Software Development :: Quality Assurance",
         "Programming Language :: Python :: 3",
     ],
