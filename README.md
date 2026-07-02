@@ -237,7 +237,7 @@ Gate validation against blind human labels: **not yet run**.
 |---|---|---|
 | [lyra](https://github.com/awakenfyi/lyra) | the formula and inference core: `L = x − x̂` at activation depth | research code |
 | [xop](https://github.com/awakenfyi/xop) | the standard: contract, constitution, catalog, benchmarks | alpha |
-| [xop-kit](https://github.com/awakenfyi/xop-kit) *(this repo)* | reference implementation: Guards, CLI, orchestrator | alpha, `pip install xop-kit` |
+| [xop-kit](https://github.com/awakenfyi/xop-kit) *(this repo)* | reference implementation: Guards, CLI, orchestrator | alpha, `git clone` + `pip install -e .` |
 
 *(This table is canonical — the same table appears in every family README.)*
 
