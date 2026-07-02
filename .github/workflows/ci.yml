@@ -22,3 +22,27 @@ jobs:
 
       - name: Run fixture suite (95/95)
         run: python cli.py test
+
+  test-installed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Non-editable install
+        run: pip install .
+      - name: Installed CLI works (scan + list)
+        run: |
+          cd /tmp
+          echo "Great question! I'd be happy to help." | xop scan --pack writing -
+          xop list --json > /dev/null
+      - name: Installed test fails loudly, never 0/0-passes
+        run: |
+          cd /tmp
+          if xop test; then
+            echo "ERROR: xop test exited 0 with no fixtures — silent 0/0 pass" >&2
+            exit 1
+          else
+            echo "OK: installed xop test fails loudly as designed"
+          fi

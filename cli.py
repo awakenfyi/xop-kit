@@ -188,6 +188,7 @@ def cmd_test(args):
         packs = list(CANONICAL.items())
 
     total_passed = total_failed = 0
+    missing = []
 
     for name, info in packs:
         guard_cls = GUARDS[info["guard"]]
@@ -195,7 +196,8 @@ def cmd_test(args):
         fixture_path = fixture_dir / info["fixtures"]
 
         if not fixture_path.exists():
-            print(f"\n  [{name}] fixtures not found: {fixture_path}")
+            print(f"\n  [{name}] MISSING fixtures: {fixture_path}", file=sys.stderr)
+            missing.append(name)
             continue
 
         print(f"\n{'='*50}")
@@ -208,6 +210,17 @@ def cmd_test(args):
     print(f"\n{'='*50}")
     print(f"  TOTAL: {total_passed}/{total_passed + total_failed} passed")
     print(f"{'='*50}")
+
+    if missing:
+        print(f"\nFAIL: {len(missing)} pack(s) had no fixtures: {', '.join(missing)}.",
+              file=sys.stderr)
+        print("Fixtures ship in the repo, not the installed package — run `xop test` "
+              "from a git checkout (git clone + pip install -e .).", file=sys.stderr)
+        sys.exit(1)
+
+    if total_passed == 0:
+        print("\nFAIL: zero fixtures ran. A 0/0 result is not a pass.", file=sys.stderr)
+        sys.exit(1)
 
     sys.exit(0 if total_failed == 0 else 1)
 
