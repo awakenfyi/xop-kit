@@ -57,8 +57,7 @@ The word is used as generic filler, a lazy metaphor, or performative transition.
 
 ### cant_tell (ambiguous intent)
 The intent is genuinely ambiguous — reasonable readers could disagree.
-→ **ABSTAIN.** The judgment is unresolved.
-→ `fallback_action: preserve_original` — an unresolved judgment never silently changes the author's text. Better to leave a slight AI-tell than to accidentally destroy a writer's deliberate stylistic choice.
+→ **ABSTAIN, toward keeping.** Better to leave a slight AI-tell than to accidentally destroy a writer's deliberate stylistic choice.
 → Confidence: low.
 → Note the ambiguity in the warrant field.
 
@@ -73,25 +72,16 @@ For each flag, return a disposition:
   "warrant": "Literal geological usage — the word means physical digging here",
   "confidence": "high",
   "replacement": "",
-  "fallback_action": "",
-  "reviewer": "model",
-  "evidence_spans": []
+  "reviewer": "model"
 }
 ```
-
-**Validation invariants (enforced by base.py v0.2.0):**
-- `replace` requires non-empty `replacement`
-- `keep` forbids `replacement`
-- `abstain` forbids `replacement` and requires `fallback_action`
 
 ## Gate — the one invariant. Fixed law, not a recommendation.
 
 Never override a warranted, precise authorial choice just because it appears on a blacklist.
 
-**Runtime:** The xOP outputs `gate_status: not_evaluated`. A separate conformance runner evaluates held/violated/inconclusive against blind human labels or hidden fixtures.
-
-- **held** — no warranted words were replaced.
-- **violated** — a warranted word was replaced. This is the failure mode.
+- **gate_status: held** — no warranted words were replaced.
+- **gate_status: violated** — a warranted word was replaced. This is the failure mode.
 
 A gate violation means the xOP broke. Log it, report it, fix it.
 

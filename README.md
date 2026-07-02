@@ -1,10 +1,16 @@
-# xOP Kit — Reference Implementation
+# xOP Kit
 
-[![status: alpha](https://img.shields.io/badge/status-alpha-orange)](https://github.com/awakenfyi/xop-kit)
-[![license: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![python: 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](setup.py)
+**Seven deterministic Guards. One gate. Zero token cost.**
 
-The reference implementation of the [xOP Standard](https://github.com/awakenfyi/xop).
+[![CI](https://github.com/awakenfyi/xop-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/awakenfyi/xop-kit/actions/workflows/ci.yml) [![status: alpha](https://img.shields.io/badge/status-alpha-orange)](https://github.com/awakenfyi/xop-kit) [![license: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+```bash
+git clone https://github.com/awakenfyi/xop-kit
+cd xop-kit
+pip install -e .
+echo "Great question! I'd be happy to help with that." | xop scan --pack writing -
+xop test        # 95/95 deterministic fixtures (run from a git checkout)
+```
 
 > **Read this first.** Seven Guards are deterministic and rule-tested (95/95 fixtures). That tests
 > Guard determinism and rule coverage — NOT whether the gate holds. The central claim of the xOP
@@ -14,7 +20,7 @@ The reference implementation of the [xOP Standard](https://github.com/awakenfyi/
 
 ---
 
-## What this is
+## The pipeline
 
 xOP Kit executes the xOP Standard's quality-gate contract inside agent loops:
 
@@ -233,13 +239,12 @@ Gate validation against blind human labels: **not yet run**.
 
 ## The family
 
-| Repo | What | Status |
+| Repo | One line | Status |
 |---|---|---|
-| [lyra](https://github.com/awakenfyi/lyra) | the formula and inference core: `L = x − x̂` at activation depth | research code |
-| [xop](https://github.com/awakenfyi/xop) | the standard: contract, constitution, catalog, benchmarks | alpha |
-| [xop-kit](https://github.com/awakenfyi/xop-kit) *(this repo)* | reference implementation: Guards, CLI, orchestrator | alpha, `git clone` + `pip install -e .` |
-
-*(This table is canonical — the same table appears in every family README.)*
+| [lyra](https://github.com/awakenfyi/lyra) | the formula + inference core (`L = x − x̂`) | research code |
+| [xop](https://github.com/awakenfyi/xop) | the open standard for AI conduct | alpha |
+| [xop-kit](https://github.com/awakenfyi/xop-kit) *(this repo)* | the reference runtime: Guards, CLI | alpha, `git clone` + `pip install -e .` |
+| [xop-labs](https://github.com/awakenfyi/xop-labs) | domain xOPs observed in the wild | designed |
 
 ---
 

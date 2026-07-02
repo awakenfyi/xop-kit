@@ -1,0 +1,14 @@
+# Deterministic scanners that run on every output before judgment.
+# Zero tokens, zero model, same input -> same verdict. From xop-kit.
+# A Guard flags; the rule above it judges. PASS here never means "ship" —
+# it means the cheap layer found nothing. Release control decides shipping.
+
+guards:
+  - agreement-bias      # reflexive validation before analysis (S-01)
+  - closure-rush        # "done / handled" with no verification (S-07)
+  - template-cascade    # filler openings and closings (S-03)
+  - helpful-explosion   # five suggestions where one was asked (S-02)
+
+# add your own by extending guards/base.Guard in xop-kit.
+# every id listed here must resolve in xop-kit's registry.json;
+# Guard fixtures live in xop-kit's tests/, rule fixtures live here.

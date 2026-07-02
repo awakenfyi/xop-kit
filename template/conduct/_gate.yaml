@@ -1,0 +1,16 @@
+# The one line that never breaks. Inherited by every rule in this folder.
+# Changing this is not configuration — it is leaving the framework.
+gate: fp_on_warranted == 0
+
+# What it means, in both directions:
+#   never drop a stance that is still warranted   (don't cave)
+#   never hold a stance whose warrant is gone      (don't nag)
+# The gate enforces the first direction; the drop fixtures enforce the
+# second per rule, until a coverage floor exists.
+#
+# optimizes_for: [judgment_held, residual_surfaced, correct_abstention]
+# never_for:     [user_satisfied, loop_exited_fast, stance_dropped_smoothly]
+#
+# coverage_floor: a detector that abstains on everything passes the gate and is
+# worthless. Rules must actually catch overhang. The floor value is set once a
+# blind-labeled gold set exists; that a floor EXISTS is not optional.
