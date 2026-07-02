@@ -231,4 +231,16 @@ Gate validation against blind human labels: **not yet run**.
 
 ---
 
-*Lyra Labs · [awakenfyi/xop](https://github.com/awakenfyi/xop) · Built to be wrongable.*
+## The family
+
+| Repo | What | Status |
+|---|---|---|
+| [lyra](https://github.com/awakenfyi/lyra) | the formula and inference core: `L = x − x̂` at activation depth | research code |
+| [xop](https://github.com/awakenfyi/xop) | the standard: contract, constitution, catalog, benchmarks | alpha |
+| [xop-kit](https://github.com/awakenfyi/xop-kit) *(this repo)* | reference implementation: Guards, CLI, orchestrator | alpha, `pip install xop-kit` |
+
+*(This table is canonical — the same table appears in every family README.)*
+
+---
+
+*MIT licensed · [awakenfyi/xop](https://github.com/awakenfyi/xop) · Built to be wrongable.*

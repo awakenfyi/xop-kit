@@ -4,10 +4,14 @@ setup(
     name="xop-kit",
     version="0.2.0",
     description="xOP Kit — reference implementation of the xOP Standard",
-    author="Lyra Labs",
-    author_email="sage@artist.fyi",
+    author="Morgan Sage Norman",
+    author_email="hello@awaken.fyi",
     url="https://github.com/awakenfyi/xop-kit",
-    packages=find_packages(),
+    # C2 fix: cli.py and orchestrator.py are top-level modules that find_packages()
+    # misses. py_modules includes them so non-editable installs work. tests is
+    # excluded so it doesn't ship as an installed top-level package.
+    packages=find_packages(exclude=["tests", "tests.*"]),
+    py_modules=["cli", "orchestrator"],
     include_package_data=True,
     package_data={
         "": ["*.md", "*.json", "*.jsonl"],
