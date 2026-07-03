@@ -95,8 +95,12 @@ _TRICOLON   = re.compile(r"\b[\w'-]+,\s+[\w'-]+,?\s+and\s+[\w'-]+\b", re.IGNOREC
 
 
 def _strip_code_fences(text: str) -> str:
-    """Remove fenced code blocks so we don't flag code examples."""
-    return re.sub(r"```[\s\S]*?```", "", text)
+    """Blank out fenced code blocks so we don't flag code examples.
+
+    Replaces non-newline characters with spaces rather than deleting them so
+    that character offsets and line numbers remain valid for subsequent callers.
+    """
+    return re.sub(r"```[\s\S]*?```", lambda m: re.sub(r"[^\n]", " ", m.group(0)), text)
 
 
 def _strip_inline_code(text: str) -> str:
