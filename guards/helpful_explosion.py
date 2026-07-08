@@ -36,8 +36,13 @@ from guards.base import Guard, GuardReport, Flag, run_guard_cli
 # ---------------------------------------------------------------------------
 
 def _strip_code_fences(text: str) -> str:
-    """Remove fenced code blocks so we don't flag code structure."""
-    return re.sub(r"```[\s\S]*?```", "", text)
+    """Blank out fenced code blocks so we don't flag code structure.
+
+    Replaces non-newline characters with spaces rather than deleting them so
+    that character offsets and line numbers remain valid for subsequent callers
+    such as _line_of() and _extract_context().
+    """
+    return re.sub(r"```[\s\S]*?```", lambda m: re.sub(r"[^\n]", " ", m.group(0)), text)
 
 
 def _line_of(text: str, idx: int) -> int:
